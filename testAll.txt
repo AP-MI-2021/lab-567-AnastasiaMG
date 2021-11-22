@@ -1,6 +1,8 @@
 from Tests.testCRUD import testAdaugaCheltuiala, testStergeCheltuialaById, testStergeCheltuialaByNrAp
 from Tests.testDomain import testCheltuiala
-from Tests.testFunctionalitati import testAddValToCheltuialaByDate, testSumMaxByTip, testOrdonareDupaSuma
+from Tests.testFunctionalitati import testAddValToCheltuialaByDate, testSumMaxByTip, testOrdonareDupaSuma, \
+    testSumeLunarePerApartament
+from Tests.testUndoRedo import testUndoRedo
 
 
 def runAllTests():
@@ -10,4 +12,6 @@ def runAllTests():
     testStergeCheltuialaByNrAp()
     testAddValToCheltuialaByDate()
     testSumMaxByTip()
-    #testOrdonareDupaSuma()
+    testOrdonareDupaSuma()
+    testSumeLunarePerApartament()
+    testUndoRedo()

@@ -9,6 +9,9 @@ def addValToCheltuialaByDate(dataNoua, addSum, lista):
     :param lista: lista de cheltuieli
     :return: lista cu suma modificata
     '''
+    if addSum <= 0:
+        raise ValueError("Suma ce tb adaugata nu trebuie sa fie nula sau negativa")
+
     listaNoua = []
     for cheltuiala in lista:
         if getData(cheltuiala) == dataNoua:
@@ -41,10 +44,40 @@ def sumMaxByTip(lista):
             rezultat[tip] = suma
     return rezultat
 
+def suma(cheltuiala):
+    return getSuma(cheltuiala)
+
 def ordonareDupaSuma(lista):
     '''
     Ordoneaza lista descrescator dupa suma
     :param lista: lista de cheltuieli
     :return: lista ordonata descrescator
     '''
-    sorted(lista, key=getSuma)
+
+    return sorted(lista, key=suma, reverse = True)
+
+def sumeLunarePerApartament(lista):
+    '''
+
+    :param lista:
+    :return:
+    '''
+    rezultat = {}
+    for cheltuiala in lista:
+        nrAp = getNrAp(cheltuiala)
+        suma = getSuma(cheltuiala)
+        data = getData(cheltuiala)
+        luna = data[3] + data[4]
+        if nrAp in rezultat:
+            if luna in rezultat[nrAp]['luna']:
+                rezultat[nrAp]['suma'] = rezultat[nrAp]['suma'] + suma
+            else:
+                rezultat[nrAp]['luna'] = luna
+                rezultat[nrAp]['suma'] = suma
+        else:
+            rezultat[nrAp] = {}
+            rezultat[nrAp]['luna'] = luna
+            rezultat[nrAp]['suma'] = suma
+    return rezultat
+
+
