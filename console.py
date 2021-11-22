@@ -63,7 +63,7 @@ def uiStergeCheltuialaByNrAp(lista, undoList, redoList):
         nrAp = int(input("Dati numarul apartamentului al cheltuielii de sters: "))
         if nrAp <= 0:
             nrAp = int(input("Dati un nr de apartament valid: "))
-        rezultat = stergereCheltuialaByNrAp(nrAp, lista)
+        rezultat = stergereCheltuialaByNrAp(nrAp, lista, undoList, redoList)
         undoList.append(lista)
         redoList.clear()
         return rezultat
